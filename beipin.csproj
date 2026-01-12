@@ -1,0 +1,488 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{0C14CB4F-3DCB-4424-A004-F1616D7AC267}</ProjectGuid>
+    <OutputType>WinExe</OutputType>
+    <RootNamespace>beipin</RootNamespace>
+    <AssemblyName>beipin</AssemblyName>
+    <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <Deterministic>true</Deterministic>
+    <IsWebBootstrapper>false</IsWebBootstrapper>
+    <TargetFrameworkProfile />
+    <PublishUrl>publish\</PublishUrl>
+    <Install>true</Install>
+    <InstallFrom>Disk</InstallFrom>
+    <UpdateEnabled>false</UpdateEnabled>
+    <UpdateMode>Foreground</UpdateMode>
+    <UpdateInterval>7</UpdateInterval>
+    <UpdateIntervalUnits>Days</UpdateIntervalUnits>
+    <UpdatePeriodically>false</UpdatePeriodically>
+    <UpdateRequired>false</UpdateRequired>
+    <MapFileExtensions>true</MapFileExtensions>
+    <AutorunEnabled>true</AutorunEnabled>
+    <ApplicationRevision>3</ApplicationRevision>
+    <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
+    <UseApplicationTrust>false</UseApplicationTrust>
+    <PublishWizardCompleted>true</PublishWizardCompleted>
+    <BootstrapperEnabled>true</BootstrapperEnabled>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>x86</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <PropertyGroup>
+    <ManifestCertificateThumbprint>3BD2BCF94DEFC45052916F2942BF4A2D428F2809</ManifestCertificateThumbprint>
+  </PropertyGroup>
+  <PropertyGroup>
+    <ManifestKeyFile>beipin_TemporaryKey.pfx</ManifestKeyFile>
+  </PropertyGroup>
+  <PropertyGroup>
+    <GenerateManifests>false</GenerateManifests>
+  </PropertyGroup>
+  <PropertyGroup>
+    <SignManifests>true</SignManifests>
+  </PropertyGroup>
+  <PropertyGroup>
+    <TargetZone>LocalIntranet</TargetZone>
+  </PropertyGroup>
+  <PropertyGroup>
+    <ApplicationManifest>Properties\app.manifest</ApplicationManifest>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'test|AnyCPU'">
+    <OutputPath>bin\test\</OutputPath>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|x64'">
+    <DebugSymbols>true</DebugSymbols>
+    <OutputPath>bin\x64\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <DebugType>full</DebugType>
+    <PlatformTarget>x64</PlatformTarget>
+    <LangVersion>7.3</LangVersion>
+    <ErrorReport>prompt</ErrorReport>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|x64'">
+    <OutputPath>bin\x64\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <Optimize>true</Optimize>
+    <DebugType>pdbonly</DebugType>
+    <PlatformTarget>x64</PlatformTarget>
+    <LangVersion>7.3</LangVersion>
+    <ErrorReport>prompt</ErrorReport>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'test|x64'">
+    <OutputPath>bin\x64\test\</OutputPath>
+    <PlatformTarget>x64</PlatformTarget>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|x86'">
+    <DebugSymbols>true</DebugSymbols>
+    <OutputPath>bin\x86\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <DebugType>full</DebugType>
+    <PlatformTarget>x86</PlatformTarget>
+    <LangVersion>7.3</LangVersion>
+    <ErrorReport>prompt</ErrorReport>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|x86'">
+    <OutputPath>bin\x86\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <Optimize>true</Optimize>
+    <DebugType>pdbonly</DebugType>
+    <PlatformTarget>x86</PlatformTarget>
+    <LangVersion>7.3</LangVersion>
+    <ErrorReport>prompt</ErrorReport>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'test|x86'">
+    <OutputPath>bin\x86\test\</OutputPath>
+    <PlatformTarget>x86</PlatformTarget>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <PropertyGroup>
+    <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Newtonsoft.Json, Version=13.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>packages\Newtonsoft.Json.13.0.4\lib\net45\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="S7.Net, Version=0.20.0.0, Culture=neutral, PublicKeyToken=d5812d469e84c693, processorArchitecture=MSIL">
+      <HintPath>packages\S7netplus.0.20.0\lib\net452\S7.Net.dll</HintPath>
+    </Reference>
+    <Reference Include="System">
+      <HintPath>..\..\..\..\..\Windows\Microsoft.NET\Framework\v2.0.50727\System.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Buffers, Version=4.0.3.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>packages\System.Buffers.4.5.1\lib\netstandard1.1\System.Buffers.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Data" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Deployment" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.EnterpriseServices" />
+    <Reference Include="System.Memory, Version=4.0.1.2, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>packages\System.Memory.4.5.5\lib\netstandard1.1\System.Memory.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Runtime.CompilerServices.Unsafe, Version=4.0.4.1, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>packages\System.Runtime.CompilerServices.Unsafe.4.5.3\lib\netstandard1.0\System.Runtime.CompilerServices.Unsafe.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Services" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="FrmPlcCommunication.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmPlcCommunication.Designer.cs">
+      <DependentUpon>FrmPlcCommunication.cs</DependentUpon>
+    </Compile>
+    <Compile Include="LaserFile.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="LaserFile.Designer.cs">
+      <DependentUpon>LaserFile.cs</DependentUpon>
+    </Compile>
+    <Compile Include="IniFile.cs" />
+    <Compile Include="CommLib.cs" />
+    <Compile Include="dbDataSet.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>dbDataSet.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="Main.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Main.Designer.cs">
+      <DependentUpon>Main.cs</DependentUpon>
+    </Compile>
+    <Compile Include="MyAccess.cs" />
+    <Compile Include="MyDatabase.cs" />
+    <Compile Include="Program.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Web References\SanhuaApiService\Reference.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reference.map</DependentUpon>
+    </Compile>
+    <EmbeddedResource Include="FrmPlcCommunication.resx">
+      <DependentUpon>FrmPlcCommunication.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="LaserFile.resx">
+      <DependentUpon>LaserFile.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Main.resx">
+      <DependentUpon>Main.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="obj\Debug\beipin.FrmFile.resources" />
+    <EmbeddedResource Include="obj\Debug\beipin.FrmMain.resources" />
+    <EmbeddedResource Include="obj\Debug\beipin.Properties.Resources.resources" />
+    <EmbeddedResource Include="obj\Release\beipin.FrmFile.resources" />
+    <EmbeddedResource Include="obj\Release\beipin.FrmMain.resources" />
+    <EmbeddedResource Include="obj\Release\beipin.Properties.Resources.resources" />
+    <EmbeddedResource Include="obj\x86\Debug\beipin.Main.resources" />
+    <EmbeddedResource Include="obj\x86\Debug\beipin.Properties.Resources.resources" />
+    <EmbeddedResource Include="obj\x86\Release\beipin.FrmFile.resources" />
+    <EmbeddedResource Include="obj\x86\Release\beipin.FrmMain.resources" />
+    <EmbeddedResource Include="obj\x86\Release\beipin.Properties.Resources.resources" />
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Resources.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <None Include=".gitattributes" />
+    <None Include=".gitignore" />
+    <None Include="app.config" />
+    <None Include="beipin_TemporaryKey.pfx" />
+    <None Include="bin\Debug\beipin.application" />
+    <None Include="bin\Debug\beipin.exe.config" />
+    <None Include="bin\Debug\beipin.exe.manifest" />
+    <None Include="bin\Debug\beipin\config.ini" />
+    <None Include="bin\Debug\config.ini" />
+    <None Include="bin\Release\beipin.application" />
+    <None Include="bin\Release\beipin.exe.config" />
+    <None Include="bin\Release\beipin.exe.manifest" />
+    <None Include="bin\Release\config.ini" />
+    <None Include="bin\x86\Debug\beipin.exe.config" />
+    <None Include="bin\x86\Release\beipin.application" />
+    <None Include="bin\x86\Release\beipin.exe.config" />
+    <None Include="bin\x86\Release\beipin.exe.manifest" />
+    <None Include="config.ini" />
+    <None Include="dbDataSet.xsc">
+      <DependentUpon>dbDataSet.xsd</DependentUpon>
+    </None>
+    <None Include="dbDataSet.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>dbDataSet.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="dbDataSet.xss">
+      <DependentUpon>dbDataSet.xsd</DependentUpon>
+    </None>
+    <None Include="LaserMarkCommLib\LaserMarkCommLib.lib" />
+    <None Include="obj\Debug\beipin.application" />
+    <None Include="obj\Debug\beipin.csproj.AssemblyReference.cache" />
+    <None Include="obj\Debug\beipin.csproj.CopyComplete" />
+    <None Include="obj\Debug\beipin.csproj.CoreCompileInputs.cache" />
+    <None Include="obj\Debug\beipin.csproj.GenerateResource.cache" />
+    <None Include="obj\Debug\beipin.exe.manifest" />
+    <None Include="obj\Debug\config.ini" />
+    <None Include="obj\Debug\DesignTimeResolveAssemblyReferences.cache" />
+    <None Include="obj\Debug\DesignTimeResolveAssemblyReferencesInput.cache" />
+    <None Include="obj\Debug\sanhua.csproj.AssemblyReference.cache" />
+    <None Include="obj\Debug\sanhua.csproj.CoreCompileInputs.cache" />
+    <None Include="obj\Debug\sanhua.csproj.GenerateResource.cache" />
+    <None Include="obj\Release\beipin.application" />
+    <None Include="obj\Release\beipin.csproj.CopyComplete" />
+    <None Include="obj\Release\beipin.csproj.CoreCompileInputs.cache" />
+    <None Include="obj\Release\beipin.csproj.GenerateResource.cache" />
+    <None Include="obj\Release\beipin.exe.manifest" />
+    <None Include="obj\Release\DesignTimeResolveAssemblyReferencesInput.cache" />
+    <None Include="obj\x86\Debug\beipin.csproj.CoreCompileInputs.cache" />
+    <None Include="obj\x86\Debug\beipin.csproj.GenerateResource.cache" />
+    <None Include="obj\x86\Debug\config.ini" />
+    <None Include="obj\x86\Debug\DesignTimeResolveAssemblyReferencesInput.cache" />
+    <None Include="obj\x86\Release\beipin.application" />
+    <None Include="obj\x86\Release\beipin.csproj.AssemblyReference.cache" />
+    <None Include="obj\x86\Release\beipin.csproj.CopyComplete" />
+    <None Include="obj\x86\Release\beipin.csproj.CoreCompileInputs.cache" />
+    <None Include="obj\x86\Release\beipin.csproj.GenerateResource.cache" />
+    <None Include="obj\x86\Release\beipin.exe.manifest" />
+    <None Include="obj\x86\Release\build.force" />
+    <None Include="obj\x86\Release\DesignTimeResolveAssemblyReferencesInput.cache" />
+    <None Include="packages.config" />
+    <None Include="packages\Newtonsoft.Json.9.0.1\.signature.p7s" />
+    <None Include="packages\Newtonsoft.Json.9.0.1\Newtonsoft.Json.9.0.1.nupkg" />
+    <None Include="packages\Newtonsoft.Json.9.0.1\tools\install.ps1" />
+    <None Include="Properties\app.manifest" />
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+    <None Include="publish\Application Files\beipin_1_0_0_0\beipin.application" />
+    <None Include="publish\Application Files\beipin_1_0_0_0\beipin.exe.config.deploy" />
+    <None Include="publish\Application Files\beipin_1_0_0_0\beipin.exe.deploy" />
+    <None Include="publish\Application Files\beipin_1_0_0_0\beipin.exe.manifest" />
+    <None Include="publish\Application Files\beipin_1_0_0_0\db.mdb.deploy" />
+    <None Include="publish\Application Files\beipin_1_0_0_0\LaserMarkCommLib\lasermarkcomm.h.deploy" />
+    <None Include="publish\Application Files\beipin_1_0_0_0\LaserMarkCommLib\LaserMarkCommLib.dll.deploy" />
+    <None Include="publish\Application Files\beipin_1_0_0_0\LaserMarkCommLib\lasermarkdeviceoptions.h.deploy" />
+    <None Include="publish\Application Files\beipin_1_0_0_0\Newtonsoft.Json.dll.deploy" />
+    <None Include="publish\Application Files\beipin_1_0_0_1\beipin.application" />
+    <None Include="publish\Application Files\beipin_1_0_0_1\beipin.exe.config.deploy" />
+    <None Include="publish\Application Files\beipin_1_0_0_1\beipin.exe.deploy" />
+    <None Include="publish\Application Files\beipin_1_0_0_1\beipin.exe.manifest" />
+    <None Include="publish\Application Files\beipin_1_0_0_1\db.mdb.deploy" />
+    <None Include="publish\Application Files\beipin_1_0_0_1\LaserMarkCommLib\lasermarkcomm.h.deploy" />
+    <None Include="publish\Application Files\beipin_1_0_0_1\LaserMarkCommLib\LaserMarkCommLib.dll.deploy" />
+    <None Include="publish\Application Files\beipin_1_0_0_1\LaserMarkCommLib\lasermarkdeviceoptions.h.deploy" />
+    <None Include="publish\Application Files\beipin_1_0_0_1\Newtonsoft.Json.dll.deploy" />
+    <None Include="publish\Application Files\beipin_1_0_0_2\beipin.application" />
+    <None Include="publish\Application Files\beipin_1_0_0_2\beipin.exe.config.deploy" />
+    <None Include="publish\Application Files\beipin_1_0_0_2\beipin.exe.deploy" />
+    <None Include="publish\Application Files\beipin_1_0_0_2\beipin.exe.manifest" />
+    <None Include="publish\Application Files\beipin_1_0_0_2\db.mdb.deploy" />
+    <None Include="publish\Application Files\beipin_1_0_0_2\LaserMarkCommLib\lasermarkcomm.h.deploy" />
+    <None Include="publish\Application Files\beipin_1_0_0_2\LaserMarkCommLib\LaserMarkCommLib.dll.deploy" />
+    <None Include="publish\Application Files\beipin_1_0_0_2\LaserMarkCommLib\lasermarkdeviceoptions.h.deploy" />
+    <None Include="publish\Application Files\beipin_1_0_0_2\Newtonsoft.Json.dll.deploy" />
+    <None Include="publish\beipin.application" />
+    <None Include="SanhuaApi\sanhuaopen.wsdl" />
+    <None Include="Web References\SanhuaApiService\PartAssemblyInfo.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </None>
+    <None Include="Web References\SanhuaApiService\Reference.map">
+      <Generator>MSDiscoCodeGenerator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </None>
+    <None Include="Web References\SanhuaApiService\sanhuaopen.wsdl" />
+    <None Include="Web References\SanhuaApiService\ServiceResponseOfArrayOfByte.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </None>
+    <None Include="Web References\SanhuaApiService\ServiceResponseOfBoolean.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </None>
+    <None Include="Web References\SanhuaApiService\ServiceResponseOfListOfMaterialInfo.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </None>
+    <None Include="Web References\SanhuaApiService\ServiceResponseOfListOfPCBBarcode.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </None>
+    <None Include="Web References\SanhuaApiService\ServiceResponseOfListOfPESWorkOrderProcessKeyParameter.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </None>
+    <None Include="Web References\SanhuaApiService\ServiceResponseOfListOfProgramFile.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </None>
+    <None Include="Web References\SanhuaApiService\ServiceResponseOfMaterialTrackInfo.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </None>
+    <None Include="Web References\SanhuaApiService\ServiceResponseOfProcessResultWithProperty.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </None>
+    <None Include="Web References\SanhuaApiService\ServiceResponseOfToolInfo.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </None>
+    <None Include="Web References\SanhuaApiService\ServiceResponseOfVerifyEquipmentIdWithWorkOrderResult.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </None>
+    <None Include="Web References\SanhuaApiService\ServiceResponseOfWorkOrder.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </None>
+    <None Include="Web References\SanhuaApiService\SHSCPG.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </None>
+    <None Include="Web References\SanhuaApiService\SMTProgramFile.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="bin\Debug\app.publish\beipin.exe" />
+    <Content Include="bin\Debug\beipin.exe" />
+    <Content Include="bin\Debug\beipin.pdb" />
+    <Content Include="bin\Debug\beipin\beipin.exe" />
+    <Content Include="bin\Debug\beipin\LaserMarkCommLib.dll" />
+    <Content Include="bin\Debug\beipin\Newtonsoft.Json.dll" />
+    <Content Include="bin\Debug\db.mdb">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="bin\Debug\LaserMarkCommLib.dll" />
+    <Content Include="bin\Debug\Newtonsoft.Json.dll" />
+    <Content Include="bin\Debug\Newtonsoft.Json.xml" />
+    <Content Include="bin\Release\app.publish\beipin.exe" />
+    <Content Include="bin\Release\beipin.exe" />
+    <Content Include="bin\Release\beipin.pdb" />
+    <Content Include="bin\Release\beipin.XmlSerializers.dll" />
+    <Content Include="bin\Release\db.mdb">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="bin\Release\Newtonsoft.Json.dll" />
+    <Content Include="bin\Release\Newtonsoft.Json.xml" />
+    <Content Include="bin\x86\Debug\beipin.exe" />
+    <Content Include="bin\x86\Debug\beipin.pdb" />
+    <Content Include="bin\x86\Release\app.publish\beipin.exe" />
+    <Content Include="bin\x86\Release\beipin.exe" />
+    <Content Include="bin\x86\Release\beipin.pdb" />
+    <Content Include="bin\x86\Release\beipin.XmlSerializers.dll" />
+    <Content Include="bin\x86\Release\beipin11.exe" />
+    <Content Include="bin\x86\Release\db.mdb">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="bin\x86\Release\Newtonsoft.Json.dll" />
+    <Content Include="bin\x86\Release\Newtonsoft.Json.xml" />
+    <Content Include="db.mdb">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="LaserMarkCommLib\lasermarkcomm.h" />
+    <Content Include="LaserMarkCommLib\LaserMarkCommLib.dll" />
+    <Content Include="LaserMarkCommLib\lasermarkdeviceoptions.h" />
+    <Content Include="obj\Debug\beipin.csproj.FileListAbsolute.txt" />
+    <Content Include="obj\Debug\beipin.exe" />
+    <Content Include="obj\Debug\beipin.pdb" />
+    <Content Include="obj\Debug\sanhua.csproj.FileListAbsolute.txt" />
+    <Content Include="obj\Debug\TempPE\dbDataSet.Designer.cs.dll" />
+    <Content Include="obj\Debug\TempPE\Properties.Resources.Designer.cs.dll" />
+    <Content Include="obj\Debug\TempPE\Web References.SanhuaApiService.Reference.cs.dll" />
+    <Content Include="obj\Debug\TempPE\Web References.SANHUAOpenService.Reference.cs.dll" />
+    <Content Include="obj\Release\beipin.csproj.FileListAbsolute.txt" />
+    <Content Include="obj\Release\beipin.exe" />
+    <Content Include="obj\Release\beipin.pdb" />
+    <Content Include="obj\Release\beipin.XmlSerializers.dll" />
+    <Content Include="obj\Release\TempPE\dbDataSet.Designer.cs.dll" />
+    <Content Include="obj\Release\TempPE\Properties.Resources.Designer.cs.dll" />
+    <Content Include="obj\Release\TempPE\Web References.SanhuaApiService.Reference.cs.dll" />
+    <Content Include="obj\x86\Debug\beipin.csproj.FileListAbsolute.txt" />
+    <Content Include="obj\x86\Debug\beipin.exe" />
+    <Content Include="obj\x86\Debug\beipin.pdb" />
+    <Content Include="obj\x86\Debug\TempPE\Properties.Resources.Designer.cs.dll" />
+    <Content Include="obj\x86\Debug\TempPE\Web References.SanhuaApiService.Reference.cs.dll" />
+    <Content Include="obj\x86\Release\beipin.csproj.FileListAbsolute.txt" />
+    <Content Include="obj\x86\Release\beipin.exe" />
+    <Content Include="obj\x86\Release\beipin.pdb" />
+    <Content Include="obj\x86\Release\beipin.XmlSerializers.dll" />
+    <Content Include="obj\x86\Release\TempPE\dbDataSet.Designer.cs.dll" />
+    <Content Include="obj\x86\Release\TempPE\Properties.Resources.Designer.cs.dll" />
+    <Content Include="obj\x86\Release\TempPE\Web References.SanhuaApiService.Reference.cs.dll" />
+    <Content Include="packages\Newtonsoft.Json.9.0.1\lib\net20\Newtonsoft.Json.dll" />
+    <Content Include="packages\Newtonsoft.Json.9.0.1\lib\net20\Newtonsoft.Json.xml" />
+    <Content Include="packages\Newtonsoft.Json.9.0.1\lib\net35\Newtonsoft.Json.dll" />
+    <Content Include="packages\Newtonsoft.Json.9.0.1\lib\net35\Newtonsoft.Json.xml" />
+    <Content Include="packages\Newtonsoft.Json.9.0.1\lib\net40\Newtonsoft.Json.dll" />
+    <Content Include="packages\Newtonsoft.Json.9.0.1\lib\net40\Newtonsoft.Json.xml" />
+    <Content Include="packages\Newtonsoft.Json.9.0.1\lib\net45\Newtonsoft.Json.dll" />
+    <Content Include="packages\Newtonsoft.Json.9.0.1\lib\net45\Newtonsoft.Json.xml" />
+    <Content Include="packages\Newtonsoft.Json.9.0.1\lib\netstandard1.0\Newtonsoft.Json.dll" />
+    <Content Include="packages\Newtonsoft.Json.9.0.1\lib\netstandard1.0\Newtonsoft.Json.xml" />
+    <Content Include="packages\Newtonsoft.Json.9.0.1\lib\portable-net40+sl5+wp80+win8+wpa81\Newtonsoft.Json.dll" />
+    <Content Include="packages\Newtonsoft.Json.9.0.1\lib\portable-net40+sl5+wp80+win8+wpa81\Newtonsoft.Json.xml" />
+    <Content Include="packages\Newtonsoft.Json.9.0.1\lib\portable-net45+wp80+win8+wpa81\Newtonsoft.Json.dll" />
+    <Content Include="packages\Newtonsoft.Json.9.0.1\lib\portable-net45+wp80+win8+wpa81\Newtonsoft.Json.xml" />
+    <Content Include="publish\autorun.inf" />
+    <Content Include="publish\beipin.exe" />
+    <Content Include="publish\setup.exe" />
+  </ItemGroup>
+  <ItemGroup>
+    <WebReferences Include="Web References\" />
+  </ItemGroup>
+  <ItemGroup>
+    <WebReferenceUrl Include="C:\Users\fang\source\repos\sanhua\SanhuaApi\sanhuaopen.wsdl">
+      <UrlBehavior>Dynamic</UrlBehavior>
+      <RelPath>Web References\SanhuaApiService\</RelPath>
+      <UpdateFromURL>C:\Users\fang\source\repos\sanhua\SanhuaApi\sanhuaopen.wsdl</UpdateFromURL>
+      <ServiceLocationURL>
+      </ServiceLocationURL>
+      <CachedDynamicPropName>
+      </CachedDynamicPropName>
+      <CachedAppSettingsObjectName>Settings</CachedAppSettingsObjectName>
+      <CachedSettingsPropName>beipin_SanhuaService_SANHUAOpen</CachedSettingsPropName>
+    </WebReferenceUrl>
+  </ItemGroup>
+  <ItemGroup>
+    <Reference Include="netstandard" />
+  </ItemGroup>
+  <ItemGroup>
+    <BootstrapperPackage Include="Microsoft.Net.Framework.3.5.SP1">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5 SP1</ProductName>
+      <Install>true</Install>
+    </BootstrapperPackage>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="release\" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+</Project>
