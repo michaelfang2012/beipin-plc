@@ -52,5 +52,15 @@ namespace beipin.Properties {
                 return ((string)(this["dbConnectionString"]));
             }
         }
+        
+        [global::System.Configuration.ApplicationScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.SpecialSettingAttribute(global::System.Configuration.SpecialSetting.ConnectionString)]
+        [global::System.Configuration.DefaultSettingValueAttribute("Data Source=WIN-NV158O9LRQM;Initial Catalog=beipin;User ID=sa;Password=1234")]
+        public string beipinConnectionString {
+            get {
+                return ((string)(this["beipinConnectionString"]));
+            }
+        }
     }
 }

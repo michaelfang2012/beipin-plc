@@ -1,4 +1,4 @@
-﻿namespace beipin   // ★★★ 这里必须改成你自己项目的命名空间 ★★★
+﻿namespace beipin   // ★★★ 必须改成你自己的项目命名空间 ★★★
 {
     partial class FrmPlcCommunication
     {
@@ -43,6 +43,10 @@
             this.btnDisConnect = new System.Windows.Forms.Button();
             this.btnConnect = new System.Windows.Forms.Button();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
+            this.txtPlcAddress = new System.Windows.Forms.TextBox();
+            this.label7 = new System.Windows.Forms.Label();
+            this.cboDataType = new System.Windows.Forms.ComboBox();
+            this.label8 = new System.Windows.Forms.Label();
             this.nudReadInterval = new System.Windows.Forms.NumericUpDown();
             this.label6 = new System.Windows.Forms.Label();
             this.chkAutoRead = new System.Windows.Forms.CheckBox();
@@ -69,9 +73,9 @@
             this.groupBox1.Controls.Add(this.txtPlcIp);
             this.groupBox1.Controls.Add(this.label1);
             this.groupBox1.Location = new System.Drawing.Point(9, 10);
-            this.groupBox1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.groupBox1.Margin = new System.Windows.Forms.Padding(2);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Padding = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.groupBox1.Padding = new System.Windows.Forms.Padding(2);
             this.groupBox1.Size = new System.Drawing.Size(570, 64);
             this.groupBox1.TabIndex = 0;
             this.groupBox1.TabStop = false;
@@ -87,7 +91,7 @@
             "S7-300",
             "S7-400"});
             this.cboCpuType.Location = new System.Drawing.Point(450, 24);
-            this.cboCpuType.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.cboCpuType.Margin = new System.Windows.Forms.Padding(2);
             this.cboCpuType.Name = "cboCpuType";
             this.cboCpuType.Size = new System.Drawing.Size(91, 20);
             this.cboCpuType.TabIndex = 7;
@@ -105,7 +109,7 @@
             // nudSlot
             // 
             this.nudSlot.Location = new System.Drawing.Point(352, 24);
-            this.nudSlot.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.nudSlot.Margin = new System.Windows.Forms.Padding(2);
             this.nudSlot.Maximum = new decimal(new int[] {
             10,
             0,
@@ -133,7 +137,7 @@
             // nudRack
             // 
             this.nudRack.Location = new System.Drawing.Point(270, 24);
-            this.nudRack.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.nudRack.Margin = new System.Windows.Forms.Padding(2);
             this.nudRack.Maximum = new decimal(new int[] {
             10,
             0,
@@ -156,7 +160,7 @@
             // txtPlcIp
             // 
             this.txtPlcIp.Location = new System.Drawing.Point(60, 24);
-            this.txtPlcIp.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.txtPlcIp.Margin = new System.Windows.Forms.Padding(2);
             this.txtPlcIp.Name = "txtPlcIp";
             this.txtPlcIp.Size = new System.Drawing.Size(166, 21);
             this.txtPlcIp.TabIndex = 1;
@@ -179,9 +183,9 @@
             this.groupBox2.Controls.Add(this.btnDisConnect);
             this.groupBox2.Controls.Add(this.btnConnect);
             this.groupBox2.Location = new System.Drawing.Point(9, 78);
-            this.groupBox2.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.groupBox2.Margin = new System.Windows.Forms.Padding(2);
             this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Padding = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.groupBox2.Padding = new System.Windows.Forms.Padding(2);
             this.groupBox2.Size = new System.Drawing.Size(570, 56);
             this.groupBox2.TabIndex = 1;
             this.groupBox2.TabStop = false;
@@ -212,7 +216,7 @@
             // btnDisConnect
             // 
             this.btnDisConnect.Location = new System.Drawing.Point(135, 20);
-            this.btnDisConnect.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.btnDisConnect.Margin = new System.Windows.Forms.Padding(2);
             this.btnDisConnect.Name = "btnDisConnect";
             this.btnDisConnect.Size = new System.Drawing.Size(75, 24);
             this.btnDisConnect.TabIndex = 1;
@@ -223,7 +227,7 @@
             // btnConnect
             // 
             this.btnConnect.Location = new System.Drawing.Point(45, 20);
-            this.btnConnect.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.btnConnect.Margin = new System.Windows.Forms.Padding(2);
             this.btnConnect.Name = "btnConnect";
             this.btnConnect.Size = new System.Drawing.Size(75, 24);
             this.btnConnect.TabIndex = 0;
@@ -233,23 +237,76 @@
             // 
             // groupBox3
             // 
+            this.groupBox3.Controls.Add(this.txtPlcAddress);
+            this.groupBox3.Controls.Add(this.label7);
+            this.groupBox3.Controls.Add(this.cboDataType);
+            this.groupBox3.Controls.Add(this.label8);
             this.groupBox3.Controls.Add(this.nudReadInterval);
             this.groupBox3.Controls.Add(this.label6);
             this.groupBox3.Controls.Add(this.chkAutoRead);
             this.groupBox3.Controls.Add(this.btnReadOnce);
             this.groupBox3.Location = new System.Drawing.Point(9, 139);
-            this.groupBox3.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.groupBox3.Margin = new System.Windows.Forms.Padding(2);
             this.groupBox3.Name = "groupBox3";
-            this.groupBox3.Padding = new System.Windows.Forms.Padding(2, 2, 2, 2);
-            this.groupBox3.Size = new System.Drawing.Size(570, 56);
+            this.groupBox3.Padding = new System.Windows.Forms.Padding(2);
+            this.groupBox3.Size = new System.Drawing.Size(570, 105);
             this.groupBox3.TabIndex = 2;
             this.groupBox3.TabStop = false;
             this.groupBox3.Text = "数据读取设置";
             // 
+            // txtPlcAddress
+            // 
+            this.txtPlcAddress.Location = new System.Drawing.Point(265, 29);
+            this.txtPlcAddress.Margin = new System.Windows.Forms.Padding(2);
+            this.txtPlcAddress.Name = "txtPlcAddress";
+            this.txtPlcAddress.Size = new System.Drawing.Size(91, 21);
+            this.txtPlcAddress.TabIndex = 7;
+            this.txtPlcAddress.Text = "M0.0";
+            this.txtPlcAddress.TextChanged += new System.EventHandler(this.txtPlcAddress_TextChanged);
+            // 
+            // label7
+            // 
+            this.label7.AutoSize = true;
+            this.label7.Location = new System.Drawing.Point(184, 32);
+            this.label7.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(77, 12);
+            this.label7.TabIndex = 6;
+            this.label7.Text = "PLC读取地址:";
+            this.label7.Click += new System.EventHandler(this.label7_Click);
+            // 
+            // cboDataType
+            // 
+            this.cboDataType.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cboDataType.FormattingEnabled = true;
+            this.cboDataType.Items.AddRange(new object[] {
+            "Bool",
+            "Byte",
+            "Int16",
+            "Int32",
+            "Float"});
+            this.cboDataType.Location = new System.Drawing.Point(80, 29);
+            this.cboDataType.Margin = new System.Windows.Forms.Padding(2);
+            this.cboDataType.Name = "cboDataType";
+            this.cboDataType.Size = new System.Drawing.Size(76, 20);
+            this.cboDataType.TabIndex = 5;
+            this.cboDataType.SelectedIndexChanged += new System.EventHandler(this.cboDataType_SelectedIndexChanged);
+            // 
+            // label8
+            // 
+            this.label8.AutoSize = true;
+            this.label8.Location = new System.Drawing.Point(26, 32);
+            this.label8.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label8.Name = "label8";
+            this.label8.Size = new System.Drawing.Size(59, 12);
+            this.label8.TabIndex = 4;
+            this.label8.Text = "数据类型:";
+            this.label8.Click += new System.EventHandler(this.label8_Click);
+            // 
             // nudReadInterval
             // 
-            this.nudReadInterval.Location = new System.Drawing.Point(315, 22);
-            this.nudReadInterval.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.nudReadInterval.Location = new System.Drawing.Point(233, 68);
+            this.nudReadInterval.Margin = new System.Windows.Forms.Padding(2);
             this.nudReadInterval.Maximum = new decimal(new int[] {
             10000,
             0,
@@ -272,7 +329,7 @@
             // label6
             // 
             this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(232, 25);
+            this.label6.Location = new System.Drawing.Point(134, 71);
             this.label6.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(95, 12);
@@ -282,8 +339,8 @@
             // chkAutoRead
             // 
             this.chkAutoRead.AutoSize = true;
-            this.chkAutoRead.Location = new System.Drawing.Point(142, 25);
-            this.chkAutoRead.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.chkAutoRead.Location = new System.Drawing.Point(324, 69);
+            this.chkAutoRead.Margin = new System.Windows.Forms.Padding(2);
             this.chkAutoRead.Name = "chkAutoRead";
             this.chkAutoRead.Size = new System.Drawing.Size(96, 16);
             this.chkAutoRead.TabIndex = 1;
@@ -293,8 +350,8 @@
             // 
             // btnReadOnce
             // 
-            this.btnReadOnce.Location = new System.Drawing.Point(45, 20);
-            this.btnReadOnce.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.btnReadOnce.Location = new System.Drawing.Point(28, 64);
+            this.btnReadOnce.Margin = new System.Windows.Forms.Padding(2);
             this.btnReadOnce.Name = "btnReadOnce";
             this.btnReadOnce.Size = new System.Drawing.Size(75, 24);
             this.btnReadOnce.TabIndex = 0;
@@ -305,11 +362,11 @@
             // groupBox4
             // 
             this.groupBox4.Controls.Add(this.txtPlcDataLog);
-            this.groupBox4.Location = new System.Drawing.Point(9, 200);
-            this.groupBox4.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.groupBox4.Location = new System.Drawing.Point(9, 248);
+            this.groupBox4.Margin = new System.Windows.Forms.Padding(2);
             this.groupBox4.Name = "groupBox4";
-            this.groupBox4.Padding = new System.Windows.Forms.Padding(2, 2, 2, 2);
-            this.groupBox4.Size = new System.Drawing.Size(570, 256);
+            this.groupBox4.Padding = new System.Windows.Forms.Padding(2);
+            this.groupBox4.Size = new System.Drawing.Size(570, 208);
             this.groupBox4.TabIndex = 3;
             this.groupBox4.TabStop = false;
             this.groupBox4.Text = "PLC信号读取日志(实时)";
@@ -318,12 +375,12 @@
             // 
             this.txtPlcDataLog.Dock = System.Windows.Forms.DockStyle.Fill;
             this.txtPlcDataLog.Location = new System.Drawing.Point(2, 16);
-            this.txtPlcDataLog.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.txtPlcDataLog.Margin = new System.Windows.Forms.Padding(2);
             this.txtPlcDataLog.Multiline = true;
             this.txtPlcDataLog.Name = "txtPlcDataLog";
             this.txtPlcDataLog.ReadOnly = true;
             this.txtPlcDataLog.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
-            this.txtPlcDataLog.Size = new System.Drawing.Size(566, 238);
+            this.txtPlcDataLog.Size = new System.Drawing.Size(566, 190);
             this.txtPlcDataLog.TabIndex = 0;
             // 
             // FrmPlcCommunication
@@ -336,11 +393,11 @@
             this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.groupBox1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
-            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.Margin = new System.Windows.Forms.Padding(2);
             this.MaximizeBox = false;
             this.Name = "FrmPlcCommunication";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "西门子PLC S7.NET通信监控";
+            this.Text = "西门子PLC S7.NET通信监控（动态地址版）";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.FrmPlcCommunication_FormClosing);
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
@@ -374,6 +431,10 @@
         private System.Windows.Forms.Button btnDisConnect;
         private System.Windows.Forms.Button btnConnect;
         private System.Windows.Forms.GroupBox groupBox3;
+        private System.Windows.Forms.TextBox txtPlcAddress;
+        private System.Windows.Forms.Label label7;
+        private System.Windows.Forms.ComboBox cboDataType;
+        private System.Windows.Forms.Label label8;
         private System.Windows.Forms.NumericUpDown nudReadInterval;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.CheckBox chkAutoRead;

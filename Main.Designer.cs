@@ -272,7 +272,7 @@ namespace beipin
             // 
             // tmInitLaser
             // 
-            this.tmInitLaser.Interval = 500;
+            this.tmInitLaser.Interval = 1000;
             this.tmInitLaser.Tick += new System.EventHandler(this.tmInitLaser_Tick);
             // 
             // tbxStopMark
@@ -396,7 +396,7 @@ namespace beipin
             // 
             // tmReconnect
             // 
-            this.tmReconnect.Interval = 1000;
+            this.tmReconnect.Interval = 1500;
             this.tmReconnect.Tick += new System.EventHandler(this.tmReconnect_Tick);
             // 
             // button1
