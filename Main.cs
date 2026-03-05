@@ -1214,7 +1214,7 @@ namespace beipin
                     bar_no: barNo,                // PLC扫描的主条码
                     process_no: "OP1",             // 10位唯一工序号
                     file_type: "Img",                // 文件类型：Img（照片）
-                    name: fileName,                  // 重命名后的文件名称
+                    name: "刻印检测影像",                  // 重命名后的文件名称
                     do_time: DateTime.Now,// 文件产生时间（文件创建时间）
                     ok_flag: _station4Status,                      // 文件判定结果（默认OK）
                     ng_msg: "",                         // 不良原因（无则空）
@@ -1236,7 +1236,7 @@ namespace beipin
                     bar_no: barNo,                // PLC扫描的主条码
                     process_no: "OP1",             // 10位唯一工序号
                     file_type: "Img",                // 文件类型：Img（照片）
-                    name: fileName,                  // 重命名后的文件名称
+                    name: "O形圈识别检测影像",                  // 重命名后的文件名称
                     do_time: DateTime.Now,// 文件产生时间（文件创建时间）
                     ok_flag: _cameraOkFlag,                      // 文件判定结果（默认OK）
                     ng_msg: "",                         // 不良原因（无则空）

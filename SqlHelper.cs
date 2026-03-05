@@ -86,7 +86,7 @@ namespace beipin
                                 data001
                             ) VALUES(
                                 @bar_no, @process_no, GETDATE(), GETDATE(), @vou_no,
-                                '', @ok_flag, '', @user_id, 1,
+                                '', @ok_flag, '', @user_id, 0,
                                 @eqpt_loc_id, 0, 0, 0,
                                 @data001
                             )";
