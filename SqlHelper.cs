@@ -33,19 +33,19 @@ namespace beipin
                 string sql = @"
                     -- 插入工位2状态映射（关联当前processNo）
                     INSERT INTO SHProcessPropertyParse(process_no, field_name, field_name_cn, data_type)
-                    VALUES(@process_no, 'data001', '工位2状态', 'varchar');
+                    VALUES(@process_no, 'data001', '二维码等级', 'varchar');
 
                     -- 插入工位3状态映射
-                    INSERT INTO SHProcessPropertyParse(process_no, field_name, field_name_cn, data_type)
-                    VALUES(@process_no, 'data002', '工位3状态', 'varchar');
+                    --INSERT INTO SHProcessPropertyParse(process_no, field_name, field_name_cn, data_type)
+                    --VALUES(@process_no, 'data002', '工位3状态', 'varchar');
 
                     -- 插入工位4状态映射
-                    INSERT INTO SHProcessPropertyParse(process_no, field_name, field_name_cn, data_type)
-                    VALUES(@process_no, 'data003', '工位4状态', 'varchar');
+                    --INSERT INTO SHProcessPropertyParse(process_no, field_name, field_name_cn, data_type)
+                    --VALUES(@process_no, 'data003', '工位4状态', 'varchar');
 
                     -- 插入相机判断状态映射
-                    INSERT INTO SHProcessPropertyParse(process_no, field_name, field_name_cn, data_type)
-                    VALUES(@process_no, 'data004', '相机判断状态', 'int');";
+                    --INSERT INTO SHProcessPropertyParse(process_no, field_name, field_name_cn, data_type)
+                    --VALUES(@process_no, 'data004', '相机判断状态', 'int');";
 
                 using (SqlConnection conn = new SqlConnection(_connStr))
                 {
@@ -69,7 +69,8 @@ namespace beipin
             string station2Status,  // 工位2状态（data001）
             string station3Status,  // 工位3状态（data002）
             string station4Status,  // 工位4状态（data003）
-            ushort cameraStatus,     // 相机判断状态（data004）
+            ushort cameraStatus,     // 相机判断状态（data004）,
+            string okflag,
             string qrCodeLevel,
             string vouNo = "",      // 派工单（无则空）
             string userId = "PLC",  // 用户名（默认PLC）
@@ -82,12 +83,12 @@ namespace beipin
                                 bar_no, process_no, do_time, start_time, vou_no, 
                                 item_no, ok_flag, ng_msg, user_id, flag, 
                                 eqpt_loc_id, major_state, second_state, aux_state,
-                                data001, data002, data003, data004,data005
+                                data001
                             ) VALUES(
                                 @bar_no, @process_no, GETDATE(), GETDATE(), @vou_no,
-                                '', 'OK', '', @user_id, 1,
+                                '', @ok_flag, '', @user_id, 1,
                                 @eqpt_loc_id, 0, 0, 0,
-                                @data001, @data002, @data003, @data004,@data005
+                                @data001
                             )";
 
                 using (SqlConnection conn = new SqlConnection(_connStr))
@@ -103,11 +104,13 @@ namespace beipin
                         cmd.Parameters.Add("@user_id", SqlDbType.VarChar, 8).Value = userId;
                         cmd.Parameters.Add("@eqpt_loc_id", SqlDbType.VarChar, 20).Value = eqptLocId;
                         // PLC数据映射
-                        cmd.Parameters.Add("@data001", SqlDbType.VarChar, 50).Value = station2Status ?? "";
-                        cmd.Parameters.Add("@data002", SqlDbType.VarChar, 50).Value = station3Status ?? "";
-                        cmd.Parameters.Add("@data003", SqlDbType.VarChar, 50).Value = station4Status ?? "";
-                        cmd.Parameters.Add("@data004", SqlDbType.Int).Value = cameraStatus;
-                        cmd.Parameters.Add("@data005", SqlDbType.VarChar, 50).Value = qrCodeLevel ?? "";
+                        cmd.Parameters.Add("@data001", SqlDbType.VarChar, 50).Value = qrCodeLevel ?? "";
+                        cmd.Parameters.Add("@ok_flag", SqlDbType.VarChar, 8).Value = okflag;
+
+                        /* cmd.Parameters.Add("@data002", SqlDbType.VarChar, 50).Value = okflag ?? "";
+                         cmd.Parameters.Add("@data003", SqlDbType.VarChar, 50).Value = station4Status ?? "";
+                         cmd.Parameters.Add("@data004", SqlDbType.Int).Value = cameraStatus;
+                         cmd.Parameters.Add("@data005", SqlDbType.VarChar, 50).Value = qrCodeLevel ?? "";*/
 
                         int rows = cmd.ExecuteNonQuery();
                         return rows > 0;
@@ -142,7 +145,7 @@ namespace beipin
             string file_type,
             string name,
             DateTime do_time,
-            string ok_flag = "OK",
+            string ok_flag,
             string ng_msg = "",
             string path = "",
             int flag = 0

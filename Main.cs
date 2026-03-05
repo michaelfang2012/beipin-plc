@@ -47,7 +47,10 @@ namespace beipin
         private string _station3Status;      // 3.上传-工位3状态（Char）
         private string _station4Status;      // 4.上传-工位4状态（Char）
         private ushort _cameraJudgeStatus;    // 5.上传-相机判断状态（Word）
+        private string _cameraOkFlag;   //相机状态
         private string _qrCodeLevel;         // 9-二维码等级
+        private string _okflag;      // 上传-整体状态（Char）
+
 
         // 标记是否正在处理数据（避免重复触发）
         private bool _isProcessing = false;
@@ -297,16 +300,25 @@ namespace beipin
 
                         // 获取 lot_no 字段的值
                         string lotNo = "";
-
+                        try
+                        {
                             lotNo = contentObject["lot_no"].ToString();
                             saveLog("lotNo:" + lotNo);
+                        }
+                        finally
+                        {
+
+                        }
                        
 
                         // 获取 lot_no 字段的值
                         string ssNo = "";
-                            ssNo = contentObject["ss_no"].ToString();
-                            saveLog("ssNo:" + ssNo);
-                     
+                        if (contentObject.ContainsKey("ss_no"))
+                            {
+                                ssNo = contentObject["ss_no"].ToString();
+                                saveLog("ssNo:" + ssNo);
+                            }
+
 
                             //3、条码下发给设备时上传当前条码状态
                             sanhuaOpen.WorkOrderBarcodeWaitPrintFinsh(tbxComId.Text, barNo);
@@ -373,25 +385,26 @@ namespace beipin
                     try
                     {
                         // ====== 3. 先插入解析表 SHProcessPropertyParse ======
-                        bool parseInsertSuccess = await Task.Run(() =>
-                            _sqlHelper.InsertProcessParseTable(processNo)
+                       /* bool parseInsertSuccess = await Task.Run(() =>
+                            _sqlHelper.InsertProcessParseTable("OP1")
                         );
                         if (!parseInsertSuccess)
                         {
                             saveLog("解析表插入失败，终止数据入库！");
                             _isProcessing = false;
                             return;
-                        }
+                        }*/
 
                         // ====== 4. 再插入存储表 SHProcessProperty（关联同一processNo）======
                         bool propertyInsertSuccess = await Task.Run(() =>
                             _sqlHelper.InsertProcessProperty(
-                                processNo: processNo,        // 关联唯一processNo
+                                processNo: "OP1",        // 关联唯一processNo
                                 barNo: _scanQrCode,          // 二维码→bar_no
                                 station2Status: _station2Status, // 工位2→data001
                                 station3Status: _station3Status, // 工位3→data002
                                 station4Status: _station4Status, // 工位4→data003
                                 cameraStatus: _cameraJudgeStatus, // 相机状态→data004
+                                okflag: _okflag,
                                 qrCodeLevel: _qrCodeLevel,
                                 vouNo: tbxVouNo.Text
                             )
@@ -410,6 +423,7 @@ namespace beipin
                             // MessageBox.Show("数据入库失败！", "错误", MessageBoxButtons.OK, MessageBoxIcon.Error);
                         }
 
+                        saveLog("开始读取二维码图片：" + qrImgPath);
 
                         string lastQrFile = GetLatestCreatedImageFileName(qrImgPath);
                         if(null==lastQrFile)
@@ -418,13 +432,23 @@ namespace beipin
                         }
                         else
                         {
-                            saveLog("读取最新的二维码图片：" + lastQrFile + "，重命名为：" + processNo);
-                            RenameFileKeepExtension(Path.Combine(qrImgPath) + "\\" + lastQrFile, processNo);
-                            processQrImage(_scanQrCode, processNo, processNo);
+                            if(_scanQrCode=="NG")
+                            {
+                                saveLog("二维码无效，读取最新的二维码图片：" + lastQrFile);
+                                //RenameFileKeepExtension(Path.Combine(qrImgPath) + "\\" + lastQrFile, _scanQrCode);
+                                processQrImage(_scanQrCode, processNo, lastQrFile);
+                            }
+                            else
+                            {
+                                saveLog("读取最新的二维码图片：" + lastQrFile + "，重命名为：" + _scanQrCode);
+                                RenameFileKeepExtension(Path.Combine(qrImgPath) + "\\" + lastQrFile, _scanQrCode);
+                                processQrImage(_scanQrCode, processNo, _scanQrCode + ".jpg");
+                            }
                         }
 
+                        saveLog("开始读取相机图片：" + cameraImgPath + "\\" + DateTime.Now.ToString("yyyyMMdd"));
 
-                        string lastCameraFile = GetLatestCreatedImageFileName(cameraImgPath);
+                        string lastCameraFile = GetLatestCreatedImageFileName(cameraImgPath+"\\"+ DateTime.Now.ToString("yyyyMMdd"));
                         if (null == lastCameraFile)
                         {
                             saveLog("未找到相机图片：" + cameraImgPath);
@@ -432,7 +456,7 @@ namespace beipin
                         else
                         {
                             saveLog("读取最新的相机图片：" + lastCameraFile);
-                            processCameraImage(_scanQrCode, processNo, processNo);
+                            processCameraImage(_scanQrCode, processNo, lastCameraFile);
                         }
 
 
@@ -463,7 +487,7 @@ namespace beipin
                 // 参数说明：DataType.DataBlock(数据块)、DB号(29)、起始字节地址(0)、读取长度(50)
                 byte[] qrCodeBytes = _plc.ReadBytes(DataType.DataBlock, 29, 0, 50);
                 // 将字节数组转字符串（去除末尾空字符）
-                _scanQrCode = System.Text.Encoding.ASCII.GetString(qrCodeBytes).TrimEnd('\0');
+                _scanQrCode = System.Text.Encoding.ASCII.GetString(qrCodeBytes).TrimEnd('\0').Trim();
                 saveLog("PLC数据二维码："+_scanQrCode);
 
                 // 2. 上传-工位2状态：Char（DB29.DBB52 + DB29.DBB53，读2字节）
@@ -482,8 +506,15 @@ namespace beipin
                 saveLog("PLC工位4状态：" + _station4Status);
 
                 // 5. 上传-相机判断状态：Word（DB29.DBW58）
-                _cameraJudgeStatus = ReadPlcWord("DB29.DBW58.0");
-                saveLog("PLC相机判断状态：" + _cameraJudgeStatus);
+                byte[] cameraOkFlag = _plc.ReadBytes(DataType.DataBlock, 29, 58, 2);
+                _cameraOkFlag = Encoding.ASCII.GetString(cameraOkFlag).Trim();
+                //_cameraJudgeStatus = ReadPlcWord("DB29.DBW58.0");
+                saveLog("PLC相机判断状态：" + _cameraOkFlag);
+
+                // 6. 上传-整体状态：Char（DB29.DBB64 + DB29.DBB65，读2字节）
+                byte[] okflag = _plc.ReadBytes(DataType.DataBlock, 29, 64, 2);
+                _okflag = Encoding.ASCII.GetString(okflag).Trim();
+                saveLog("产品整体状态：" + _okflag);
 
                 char level = ReadPlcChar("DB29.DBB66");
                 _qrCodeLevel = level.ToString();
@@ -825,7 +856,9 @@ namespace beipin
 
         private void button2_Click(object sender, EventArgs e)
         {
-           if(CommLib.LM_StopMark())
+           
+
+            if (CommLib.LM_StopMark())
             {
                 saveLog("停止打标成功！");
             }
@@ -1179,13 +1212,14 @@ namespace beipin
             bool writeSuccess = await Task.Run(() =>
                 _sqlHelper.InsertProcessFileInfo(
                     bar_no: barNo,                // PLC扫描的主条码
-                    process_no: processNo,             // 10位唯一工序号
+                    process_no: "OP1",             // 10位唯一工序号
                     file_type: "Img",                // 文件类型：Img（照片）
                     name: fileName,                  // 重命名后的文件名称
                     do_time: DateTime.Now,// 文件产生时间（文件创建时间）
-                    ok_flag: "OK",                      // 文件判定结果（默认OK）
+                    ok_flag: _station4Status,                      // 文件判定结果（默认OK）
                     ng_msg: "",                         // 不良原因（无则空）
-                    path: Path.Combine(ftpPath+"/qr/"+ fileName) ,                  // 三花内网FTP完整路径
+//                    path: Path.Combine(ftpPath + "/" + fileName),                  // 三花内网FTP完整路径
+                    path: fileName ,                  // 三花内网FTP完整路径
                     flag: 0                            // 调度标记：0未调度
                    // sync_time: null,                    // 调度时间：未调度则为空
                    // sync_msg: ""                        // 调度异常信息：无则空
@@ -1199,14 +1233,14 @@ namespace beipin
             // 5. 写入SHProcessFile表（参数严格匹配表字段）
             bool writeSuccess = await Task.Run(() =>
                 _sqlHelper.InsertProcessFileInfo(
-                    bar_no: _scanQrCode,                // PLC扫描的主条码
-                    process_no: processNo,             // 10位唯一工序号
+                    bar_no: barNo,                // PLC扫描的主条码
+                    process_no: "OP1",             // 10位唯一工序号
                     file_type: "Img",                // 文件类型：Img（照片）
                     name: fileName,                  // 重命名后的文件名称
                     do_time: DateTime.Now,// 文件产生时间（文件创建时间）
-                    ok_flag: "OK",                      // 文件判定结果（默认OK）
+                    ok_flag: _cameraOkFlag,                      // 文件判定结果（默认OK）
                     ng_msg: "",                         // 不良原因（无则空）
-                    path: Path.Combine(ftpPath+ "/camera/"+fileName),                  // 三花内网FTP完整路径
+                    path: Path.Combine("/camera/" + DateTime.Now.ToString("yyyyMMdd") +"/"+ fileName),                  // 三花内网FTP完整路径
                     flag: 0                            // 调度标记：0未调度
                    // sync_time: null,                    // 调度时间：未调度则为空
                    // sync_msg: ""                        // 调度异常信息：无则空
