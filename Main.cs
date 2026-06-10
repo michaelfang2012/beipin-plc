@@ -487,7 +487,7 @@ namespace beipin
                 // 参数说明：DataType.DataBlock(数据块)、DB号(29)、起始字节地址(0)、读取长度(50)
                 byte[] qrCodeBytes = _plc.ReadBytes(DataType.DataBlock, 29, 0, 50);
                 // 将字节数组转字符串（去除末尾空字符）
-                _scanQrCode = System.Text.Encoding.ASCII.GetString(qrCodeBytes).TrimEnd('\0').Trim();
+                _scanQrCode = System.Text.Encoding.ASCII.GetString(qrCodeBytes).Replace("\r", "").Replace("\n", "").TrimEnd('\0').Trim();
                 saveLog("PLC数据二维码："+_scanQrCode);
 
                 // 2. 上传-工位2状态：Char（DB29.DBB52 + DB29.DBB53，读2字节）
@@ -635,7 +635,6 @@ namespace beipin
 
         private void btnStartLaser_Click(object sender, EventArgs e)
         {
-
             saveLog("接收到打标指令，流程开始...");
             if (tbxVouNo.Text.Length == 0)
             {
@@ -649,6 +648,17 @@ namespace beipin
                 tbxFileName.Focus();
                 return;
             }
+
+            if(!cbMesFlag.Checked)
+            {
+                //开始打标
+                if(CommLib.LM_StartMarkAndWaitFinish(timeout))
+                {
+                    saveLog("本地模式：下发指令至打标机...");
+                }
+                return;
+            }
+
             if (tbxSignName.Text.Length == 0)
             {
                 MessageBox.Show("请选择条码标签");
@@ -987,7 +997,12 @@ namespace beipin
 
         private void tbxFileName_SelectedIndexChanged(object sender, EventArgs e)
         {
-            loadMarkFile(tbxFileName.Text.Replace(".lmf3", ""));
+            DialogResult result = MessageBox.Show("是否切换模板？", "确认", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+            // 根据用户的选择进行判断
+            if (result == DialogResult.Yes)
+            {
+                loadMarkFile(tbxFileName.Text.Replace(".lmf3", ""));
+            }
 
             // reConnectLaser();
             // loadMarkFile(tbxFileName.Text.Replace(".lmf3",""));

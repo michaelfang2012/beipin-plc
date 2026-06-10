@@ -65,6 +65,7 @@ namespace beipin
             this.tbxSignTextName2 = new System.Windows.Forms.TextBox();
             this.tmReconnect = new System.Windows.Forms.Timer(this.components);
             this.button1 = new System.Windows.Forms.Button();
+            this.cbMesFlag = new System.Windows.Forms.CheckBox();
             label1 = new System.Windows.Forms.Label();
             label2 = new System.Windows.Forms.Label();
             label4 = new System.Windows.Forms.Label();
@@ -313,7 +314,7 @@ namespace beipin
             // 
             this.btnFileList.Font = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.btnFileList.ForeColor = System.Drawing.Color.Blue;
-            this.btnFileList.Location = new System.Drawing.Point(415, 304);
+            this.btnFileList.Location = new System.Drawing.Point(461, 186);
             this.btnFileList.Name = "btnFileList";
             this.btnFileList.Size = new System.Drawing.Size(141, 49);
             this.btnFileList.TabIndex = 20;
@@ -351,7 +352,7 @@ namespace beipin
             this.tbxSignNamebak.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.tbxSignNamebak.Font = new System.Drawing.Font("微软雅黑", 10.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.tbxSignNamebak.FormattingEnabled = true;
-            this.tbxSignNamebak.Location = new System.Drawing.Point(412, 372);
+            this.tbxSignNamebak.Location = new System.Drawing.Point(415, 419);
             this.tbxSignNamebak.MaxDropDownItems = 20;
             this.tbxSignNamebak.Name = "tbxSignNamebak";
             this.tbxSignNamebak.Size = new System.Drawing.Size(144, 28);
@@ -363,7 +364,7 @@ namespace beipin
             this.tbxSignTextNameBak.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.tbxSignTextNameBak.Font = new System.Drawing.Font("微软雅黑", 10.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.tbxSignTextNameBak.FormattingEnabled = true;
-            this.tbxSignTextNameBak.Location = new System.Drawing.Point(415, 419);
+            this.tbxSignTextNameBak.Location = new System.Drawing.Point(418, 466);
             this.tbxSignTextNameBak.MaxDropDownItems = 20;
             this.tbxSignTextNameBak.Name = "tbxSignTextNameBak";
             this.tbxSignTextNameBak.Size = new System.Drawing.Size(141, 28);
@@ -410,12 +411,27 @@ namespace beipin
             this.button1.UseVisualStyleBackColor = true;
             this.button1.Click += new System.EventHandler(this.button1_Click_1);
             // 
+            // cbMesFlag
+            // 
+            this.cbMesFlag.AutoSize = true;
+            this.cbMesFlag.Checked = true;
+            this.cbMesFlag.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.cbMesFlag.Font = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.cbMesFlag.Location = new System.Drawing.Point(425, 349);
+            this.cbMesFlag.Name = "cbMesFlag";
+            this.cbMesFlag.Size = new System.Drawing.Size(159, 25);
+            this.cbMesFlag.TabIndex = 31;
+            this.cbMesFlag.Text = "是否MES下发工单";
+            this.cbMesFlag.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.cbMesFlag.UseVisualStyleBackColor = true;
+            // 
             // FrmMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.WhiteSmoke;
             this.ClientSize = new System.Drawing.Size(1153, 612);
+            this.Controls.Add(this.cbMesFlag);
             this.Controls.Add(this.button1);
             this.Controls.Add(label7);
             this.Controls.Add(this.tbxSignTextName2);
@@ -444,7 +460,7 @@ namespace beipin
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "FrmMain";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "贝频上位机系统v1.0";
+            this.Text = "贝频上位机系统v2.0-plc";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.FrmMain_FormClosing);
             this.Load += new System.EventHandler(this.Main_Load);
             this.Shown += new System.EventHandler(this.Main_Shown);
@@ -485,6 +501,7 @@ namespace beipin
         private System.Windows.Forms.TextBox tbxSignTextName2;
         private System.Windows.Forms.Timer tmReconnect;
         private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.CheckBox cbMesFlag;
     }
 }
 
