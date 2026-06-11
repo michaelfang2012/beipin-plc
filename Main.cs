@@ -247,6 +247,28 @@ namespace beipin
                     isPrint = true;
                     try
                     {
+                        if (!cbMesFlag.Checked)
+                        {
+                            saveLog("本地模式：下发指令至打标机...");
+                            //开始打标
+
+                            if (CommLib.LM_StartMarkAndWaitFinish(timeout))
+                            {
+                                //4、设备条码打印完成信息回写
+                                saveLog("条码打印成功" );
+                                WritePlcWord("DB29.DBW68.0", 2);
+                            }
+                            else
+                            {
+                                saveLog("条码打印失败" );
+                            }
+                            btnStartMark.Enabled = true;
+                            isPrint = false;
+
+                            saveLog("打标结束!");
+
+                            return;
+                        }
 
                         if (tbxVouNo.Text.Length == 0)
                         {
@@ -636,12 +658,6 @@ namespace beipin
         private void btnStartLaser_Click(object sender, EventArgs e)
         {
             saveLog("接收到打标指令，流程开始...");
-            if (tbxVouNo.Text.Length == 0)
-            {
-                MessageBox.Show("工单信息为空，请输入或扫码！");
-                tbxVouNo.Focus();
-                return;
-            }
             if(tbxFileName.Text.Length==0)
             {
                 MessageBox.Show("请选择打标文件");
@@ -656,6 +672,13 @@ namespace beipin
                 {
                     saveLog("本地模式：下发指令至打标机...");
                 }
+                return;
+            }
+
+            if (tbxVouNo.Text.Length == 0)
+            {
+                MessageBox.Show("工单信息为空，请输入或扫码！");
+                tbxVouNo.Focus();
                 return;
             }
 
