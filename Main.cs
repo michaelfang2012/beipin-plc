@@ -264,6 +264,7 @@ namespace beipin
                             }
                             btnStartMark.Enabled = true;
                             isPrint = false;
+                            _isProcessing = false;
 
                             saveLog("打标结束!");
 

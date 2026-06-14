@@ -424,6 +424,7 @@
     <Content Include="db.mdb">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
+    <Content Include="LaserMarkCommLib.dll" />
     <Content Include="LaserMarkCommLib\lasermarkcomm.h" />
     <Content Include="LaserMarkCommLib\LaserMarkCommLib.dll" />
     <Content Include="LaserMarkCommLib\lasermarkdeviceoptions.h" />
@@ -471,6 +472,7 @@
     <Content Include="publish\autorun.inf" />
     <Content Include="publish\beipin.exe" />
     <Content Include="publish\setup.exe" />
+    <Content Include="Setup.ico" />
   </ItemGroup>
   <ItemGroup>
     <WebReferences Include="Web References\" />
