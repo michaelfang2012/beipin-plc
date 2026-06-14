@@ -510,7 +510,10 @@ namespace beipin
                 // 参数说明：DataType.DataBlock(数据块)、DB号(29)、起始字节地址(0)、读取长度(50)
                 byte[] qrCodeBytes = _plc.ReadBytes(DataType.DataBlock, 29, 0, 50);
                 // 将字节数组转字符串（去除末尾空字符）
-                _scanQrCode = System.Text.Encoding.ASCII.GetString(qrCodeBytes).Replace("\r", "").Replace("\n", "").TrimEnd('\0').Trim();
+                string raw = System.Text.Encoding.ASCII.GetString(qrCodeBytes);
+                _scanQrCode = new string(raw.Where(c => !char.IsControl(c)).ToArray()).Trim();
+
+                // _scanQrCode = System.Text.Encoding.ASCII.GetString(qrCodeBytes).Replace("\r", "").Replace("\n", "").TrimEnd('\0').Trim();
                 saveLog("PLC数据二维码："+_scanQrCode);
 
                 // 2. 上传-工位2状态：Char（DB29.DBB52 + DB29.DBB53，读2字节）
